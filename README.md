@@ -1,13 +1,10 @@
-# 🧩 Minecraft Mods Repository
+# Minecraft Mods Repository 🧩
 
-Ein vollständiges **Client-Server-System** zum Verwalten, Anzeigen und Hochladen von Minecraft-Mods (Java Edition).  
-Das Projekt wurde im Rahmen der Vorlesung *Projekt 2 (P2)* an der **TH Wildau** entwickelt.
+Dieses Repository enthält das Projekt für die Vorlesung **Programmierung 2 (P2)** an der **TH Wildau**. Ziel war die Entwicklung eines funktionsfähigen Client-Server-Systems zur Verwaltung und Bereitstellung von Minecraft-Mods (Java Edition).
 
----
+## Funktionsübersicht
 
-## 🚀 Funktionsübersicht
-
-### 🗂 Repository-Funktionen
+###  Repository-Funktionen
 - Anzeige aller gespeicherten **Mods** in einer modernen, responsiven Oberfläche  
 - **Suchfunktion** (nach Titel, Beschreibung oder Autor)  
 - **Sortierung** nach:
@@ -30,82 +27,65 @@ Das Projekt wurde im Rahmen der Vorlesung *Projekt 2 (P2)* an der **TH Wildau** 
 
 ---
 
-## ⚙️ Technischer Aufbau
+## Technischer Aufbau
+Das Projekt ist in eine Frontend- und eine Backend-Komponente unterteilt:
 
-| Ebene | Technologie | Beschreibung |
-|--------|--------------|---------------|
-| **Frontend** | React + TypeScript + Vite + TailwindCSS | Single-Page-Application mit Routing, Suche, Sortierung & Upload |
-| **Backend** | Java 21 + Spring Boot | REST-API mit SQLite-Persistenz & Dateispeicherung |
-| **Datenbank** | SQLite (`data/mods.db`) | Speicherung aller Mod-Metadaten |
-| **Storage** | Filesystem (`data/files`, `data/images`) | Ablage der hochgeladenen `.jar`-Dateien und Bilder |
-
----
-
-## 🧑‍💻 Entwicklungsstart (Dev-Modus)
-
-Dieser Modus eignet sich, wenn du Frontend und Backend **getrennt** starten und live entwickeln möchtest.
-
-### 🔧 Voraussetzungen
-- Node.js ≥ 18  
-- Java ≥ 17  
-- Maven installiert  
+| Komponente | Stack |
+| :--- | :--- |
+| **Frontend** | React, TypeScript, Vite, TailwindCSS |
+| **Backend** | Java 21, Spring Boot |
+| **Datenbank** | SQLite (`data/mods.db`) |
+| **Storage** | Lokales Dateisystem für JARs und Bilder |
 
 ---
 
-### 🔹 Schritt 1 – Backend starten
+## Installation & Entwicklung
+
+Um das Projekt lokal zu bearbeiten oder zu testen, sollten Frontend und Backend separat gestartet werden.
+
+### Voraussetzungen
+* Java 17 oder höher
+* Node.js (v18+)
+* Maven
+
+### 1. Backend starten
 ```bash
 cd mod-repo-backend
 mvn spring-boot:run
+
 ```
 
-- Das Backend läuft anschließend auf:  
-  👉 [http://localhost:8080](http://localhost:8080)
+Das Backend ist anschließend unter `http://localhost:8080` erreichbar.
 
----
+### 2. Frontend starten
 
-### 🔹 Schritt 2 – Frontend starten
-In einem **neuen Terminalfenster**:
+Öffne ein zweites Terminal:
+
 ```bash
 cd frontend
-npm install     # nur beim ersten Mal nötig
+npm install
 npm run dev
+
 ```
 
-- Das Frontend läuft anschließend auf:  
-  👉 [http://localhost:5173](http://localhost:5173)
-
-💡 Das Frontend ist über den **Vite-Proxy** mit dem Backend verbunden (`/api` → `http://localhost:8080`).
+Das Frontend läuft auf `http://localhost:5173`. Dank der Proxy-Konfiguration in Vite werden API-Anfragen automatisch an den Java-Server weitergeleitet.
 
 ---
 
-## 🧾 Hinweise
+## Erfüllung der Projektanforderungen
 
-- Deep Links wie `/mod/2` funktionieren automatisch durch den SPA-Fallback.
-- Beim Hochladen werden Dateien automatisch im `data/`-Verzeichnis abgelegt.
-- Die SQLite-Datenbank `mods.db` enthält alle Metadaten der Mods.
-- Die Anwendung ist vollständig **client-server-basiert** und erfüllt alle **Projektanforderungen**:
-  - persistente Datenspeicherung  
-  - gleichzeitige Mehrbenutzung  
-  - serverseitige REST-API  
-  - moderne, intuitive Weboberfläche  
+Im Rahmen der P2-Prüfung wurden folgende Anforderungen umgesetzt:
+
+* [x] **Persistente Datenspeicherung:** Nutzung von SQLite und Dateisystem.
+* [x] **Client-Server-Architektur:** Saubere Trennung über eine REST-API.
+* [x] **Nebenläufigkeit:** Spring Boot handelt parallele Client-Anfragen.
+* [x] **Funktionsumfang:** Uploads, Downloads, statistische Auswertungen und Validierung der Pflichtfelder.
 
 ---
 
-## ✅ Zusammenfassung der Projektanforderungen
+**Autoren:** Sullyvin Klehr, ...
 
-| Nr. | Anforderung | Erfüllt |
-|----:|--------------|:-------:|
-| 1 | Softwareanwendung für Minecraft-Mods (Java Edition) | ✅ |
-| 2 | Speicherung von Titel, Beschreibung, Bild, Versionen, Beliebtheit, Datum | ✅ |
-| 3 | Anzeige aller Mods (Tabelle/Kartenansicht) | ✅ |
-| 4 | Download-Funktion für Mod-JARs | ✅ |
-| 5 | Statistische Auswertungen (Top, Versionen) | ✅ |
-| 6 | Ansprechende, moderne Oberfläche | ✅ |
-| 7 | Client-Server-Architektur mit persistenter Speicherung | ✅ |
-| 8 | Backend in Java (Spring Boot), Frontend frei gewählt | ✅ |
+**Studiengang:** Telematik – TH Wildau
 
----
+**Semester:** WS 2025/26
 
-**Autoren:** Sullyvin Klehr, ... 
-**Modul:** Programmierung 2 - Telematik – TH Wildau  
-**Jahr:** WS 2025/26  
